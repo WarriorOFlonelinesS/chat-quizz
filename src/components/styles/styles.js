@@ -111,10 +111,14 @@ export const Header = styled.div`
   justify-content: flex-end;
 `;
 
+export const HeaderContent = styled.div`
+  display: flex;
+`
+
 export const Avatar = styled.img`
   background-color: white;
-  width: 76.081px;
-  height: 76.081px;
+  width: 36.081px;
+  height: 36.081px;
   border-radius: 50px;
 `;
 

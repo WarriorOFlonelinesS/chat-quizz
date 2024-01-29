@@ -5,28 +5,26 @@ import { Provider } from "react-redux";
 import store from "./redux/store";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Main } from "./components/Main";
-import LogIn from "./components/log in/LogIn";
-import SignUp from "./components/sign up/SignUp";
+import { AuthContextProvider } from "./context/AuthContext";
+import Signin from "./pages/Signin";
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main />,
   },
   {
-    path: "/login",
-    element: <LogIn />,
-  },
-  {
-    path: "/signup",
-    element: <SignUp />,
+    path: "/signin",
+    element: <Signin />,
   },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <RouterProvider router={router} />
-    </Provider>
+    <AuthContextProvider>
+      <Provider store={store}>
+        <RouterProvider router={router} />
+      </Provider>
+    </AuthContextProvider>
   </React.StrictMode>
 );
