@@ -1,16 +1,16 @@
 import { useEffect } from "react";
-import { getFeatures } from "../redux/features/actions";
+import { getMessage } from "../redux/messages/actions";
 import { useDispatch, useSelector } from "react-redux";
-import { FlexContainer } from "../components/styles/styles";
-import { GlobalStyle } from "./styles/globalStyle";
+import { FlexContainer } from "../styles/components";
+import { GlobalStyle } from "../styles/globalStyle";
 import Quizz from "./Quizz";
 import Chat from "./Chat";
 
 export function Main() {
-  const features = useSelector((state) => state.features.features);
+  const messages = useSelector((state) => state.messages.messages);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getFeatures());
+    dispatch(getMessage());
   }, []);
   return (
     <>

@@ -6,7 +6,7 @@ import {
   Footer,
   ListOfQuestions,
   Title,
-} from "./styles/styles";
+} from "../styles/components";
 
 export default function Quizz() {
   const array = [

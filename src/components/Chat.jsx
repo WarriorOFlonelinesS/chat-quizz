@@ -4,19 +4,28 @@ import {
   Input,
   Button,
   ChatList,
-  Item,
-  Avatar,
   Header,
-  HeaderContent
-} from "./styles/styles";
-import { Link, useLocation } from "react-router-dom";
-import { Form } from "./styles/styles";
+  HeaderContent,
+  LogOut,
+  LinkAuth,
+} from "../styles/components";
+import { Message } from "./Message";
+import { Link } from "react-router-dom";
+import { Form } from "../styles/components";
 import Picture from "./Picture";
 import { UserAuth } from "../context/AuthContext";
+import { auth, db } from "../firebase";
+import { useCollectionData } from "react-firebase-hooks/firestore";
+import firebase from "firebase/compat/app";
 
 export default function Chat() {
-  const [message, setMessage] = useState("");
-  const [messages, setMessages] = useState([]);
+  const messagesRef = db.collection("messages");
+  const query = messagesRef.orderBy("createdAt");
+  const [messages, loadingMessages, error] = useCollectionData(query, {
+    idField: "id",
+  });
+  console.log(error);
+  const [formValue, setFormValue] = useState("");
   const { user, logOut } = UserAuth();
 
   const handleSignOut = async () => {
@@ -26,35 +35,40 @@ export default function Chat() {
       console.log(error);
     }
   };
-
-  const sendMessage = (e) => {
-    e.preventDefault();
-    setMessages([...messages, message]);
-  };
-  const location = useLocation();
-  console.log(location.pathname);
   console.log(user);
+  const sendMessage = async (e) => {
+    e.preventDefault();
+    const { uid, photoURL } = auth.currentUser;
+    await messagesRef.add({
+      text: formValue,
+      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+      uid,
+      photoURL,
+    });
+    setFormValue("");
+  };
   return (
     <ContainerChat>
       <Header>
         <div className="flex justify-between bg-gray-200 w-full p-4">
-          {user?.displayName ? (
+          {user !== null && user?.displayName ? (
             <HeaderContent>
-              <Avatar src={user.photoURL} />
-              <button onClick={handleSignOut}>Logout</button>
+              <LogOut onClick={handleSignOut}>Logout</LogOut>
             </HeaderContent>
           ) : (
-            <Link to="/signin">Sign in</Link>
+            <LinkAuth to="/signin">Sign in</LinkAuth>
           )}
         </div>
       </Header>
       <ChatList>
-        {messages.map((text) => {
-          return <li>{text}</li>;
-        })}
+        {!loadingMessages && messages && user !== null ? (
+          messages.map((msg) => <Message message={msg} />)
+        ) : (
+          <p>Loading...</p>
+        )}
       </ChatList>
       <Form onSubmit={sendMessage}>
-        <Input onChange={(e) => setMessage(e.target.value)}></Input>
+        <Input onChange={(e) => setFormValue(e.target.value)}></Input>
         <Button type="submit">
           <Picture />
         </Button>

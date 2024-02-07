@@ -1,18 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState= {
-  features: [],
+  messages: [],
 };
 
-const featuresSlice = createSlice({
-  name: "features",
+const messagesSlice = createSlice({
+  name: "messages",
   initialState,
   reducers: {
-    getFeaturesSuccess: (state, action) => {
+    getMessagesSuccess: (state, action) => {
       state.status = "succeeded";
       state.features = action.payload;
     },
-    getfeaturesFailure: (state, action) => {
+    getMessagesFailure: (state, action) => {
       state.status = "failed";
       state.error = action.payload;
     },
@@ -20,8 +20,8 @@ const featuresSlice = createSlice({
 });
 
 export const {
-  getFeaturesSuccess,
-  getFeaturesFailure,
-} = featuresSlice.actions;
+  getMessagesSuccess,
+  getMessagesFailure,
+} = messagesSlice.actions;
 
-export default featuresSlice.reducer;
+export default messagesSlice.reducer;

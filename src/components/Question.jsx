@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Item, Round } from "./styles/styles";
+import { Item, Round } from "../styles/components";
 
 
 export default function Question({question}) {

@@ -6,7 +6,7 @@ import {
   Line,
   LineProgress,
   ProgressBar,
-} from "./styles/styles";
+} from "../styles/components";
 
 export default function Progress() {
   return (

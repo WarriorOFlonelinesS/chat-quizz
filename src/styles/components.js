@@ -1,9 +1,13 @@
+import { css } from "@emotion/react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
+export const StyledHTML = styled.html`
+  height: 100%;
+`;
+
 export const FlexContainer = styled.div`
   width: 100%;
-  min-height: 1187px;
   display: flex;
 `;
 export const Container = styled.div`
@@ -15,6 +19,7 @@ export const Container = styled.div`
 export const ContainerChat = styled(Container)`
   background-color: #292f3f;
   width: 100%;
+  min-height: 90vh;
 `;
 
 export const Title = styled.h1`
@@ -30,6 +35,7 @@ export const Title = styled.h1`
 
 export const Content = styled.div`
   margin: 60px 70px;
+  height: 68.1vh;
 `;
 export const ListOfQuestions = styled.ul`
   display: flex;
@@ -38,11 +44,12 @@ export const ListOfQuestions = styled.ul`
   flex-direction: column;
   list-style: none;
   padding: 0;
+  font-size: 50px;
 `;
 export const Item = styled.li`
+  height: 135px;
   margin-bottom: 20px;
   display: inline-flex;
-  height: 65px;
   background-color: white;
   color: black;
   border-radius: 25px;
@@ -54,8 +61,8 @@ export const Item = styled.li`
 `;
 
 export const Round = styled.div`
-  width: 25px;
-  height: 25px;
+  width: 45px;
+  height: 45px;
   border-radius: 25px;
   background-color: ${(props) => (props.isDone ? "red" : "gray")};
   margin-right: 10px;
@@ -113,19 +120,23 @@ export const Header = styled.div`
 
 export const HeaderContent = styled.div`
   display: flex;
-`
+`;
 
 export const Avatar = styled.img`
   background-color: white;
-  width: 36.081px;
-  height: 36.081px;
+  width: 96.081px;
+  height: 96.081px;
   border-radius: 50px;
+  margin-right: 10px;
 `;
 
 export const ChatList = styled.ul`
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
   overflow-y: hidden;
   width: 100%;
-  height: 990px;
+  height: 80vh;
   list-style: none;
   color: white;
   font-weight: bold;
@@ -156,16 +167,18 @@ export const Form = styled.form`
   display: flex;
   justify-content: center;
   width: 100%;
+  width: 90%;
+  height: 111px;
 `;
 export const Input = styled.input`
   border: none;
   background: rgba(0, 0, 0, 0.25);
-  width: 70%;
-  height: 68.379px;
+  width: 80%;
+  height: 120px;
   flex-shrink: 0;
   border-radius: 10px;
   color: white;
-  font-size: 30px;
+  font-size: 80px;
   padding-left: 20px;
   &:focus {
     outline: none;
@@ -236,4 +249,64 @@ export const LinkAuth = styled(Link)`
   font-weight: bold;
   text-decoration: none;
   color: white;
+  font-size: 47px;
+`;
+
+export const StyledMessage = styled.li`
+  margin-bottom: 50px;
+  font-size: 45px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 100px;
+  width: fit-content;
+  padding: 30px;
+  border-radius: 21px;
+  ${({ messageClass }) =>
+    messageClass === "sent"
+      ? css`
+          margin-left: 10px;
+          justify-content: flex-start;
+          flex-direction: row-reverse;
+          background-color: #272a35;
+          align-self: flex-end;
+        `
+      : css`
+          margin-left: 10px;
+          justify-content: flex-start;
+          background-color: #373e4e;
+        `}
+`;
+
+export const LogOut = styled(Button)`
+  width: 77.904px;
+  height: 68.379px;
+  margin-left: -160px;
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+`;
+
+export const Signin = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const Time = styled.p`
+  margin-top: 80px;
+  font-size: 30px;
+  ${({ messageClass }) =>
+    messageClass === "sent"
+      ? css`
+          margin-left: 10px;
+          margin-left: 33px;
+          align-self: flex-end;
+        `
+      : css`
+          margin-left: 10px;
+          margin-right: 33px;
+          margin-left: 33px;
+          justify-content: flex-start;
+        `}
 `;
