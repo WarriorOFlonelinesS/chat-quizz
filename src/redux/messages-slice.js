@@ -2,6 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState= {
   messages: [],
+  error: '',
+  status: ''
 };
 
 const messagesSlice = createSlice({
@@ -10,7 +12,8 @@ const messagesSlice = createSlice({
   reducers: {
     getMessagesSuccess: (state, action) => {
       state.status = "succeeded";
-      state.features = action.payload;
+      state.messages = action.payload;
+  
     },
     getMessagesFailure: (state, action) => {
       state.status = "failed";
