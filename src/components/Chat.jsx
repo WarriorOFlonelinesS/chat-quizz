@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {
   ContainerChat,
   Input,
@@ -10,22 +10,18 @@ import {
   LinkAuth,
 } from "../styles/components";
 import { Message } from "./Message";
-import { Link } from "react-router-dom";
-import { Form } from "../styles/components";
-import Picture from "./Picture";
+import { useDispatch, useSelector } from "react-redux";
+import { addMessagesRequest } from "../redux/messages-slice";
 import { UserAuth } from "../context/AuthContext";
-import { auth, db } from "../firebase";
-import { useCollectionData } from "react-firebase-hooks/firestore";
-import firebase from "firebase/compat/app";
+import { auth } from "../firebase";
+import { Spin } from "antd";
 
 export default function Chat() {
   const [formValue, setFormValue] = useState("");
   const { user, logOut } = UserAuth();
-  const messagesRef = db.collection("messages");
-  const query = messagesRef.orderBy("createdAt");
-  const [messages, loadingMessages, error] = useCollectionData(query, {
-    idField: "id",
-  });
+  const messages = useSelector((state) => state.messages.messages);
+  const dispatch = useDispatch();
+
   const handleSignOut = async () => {
     try {
       await logOut();
@@ -33,17 +29,21 @@ export default function Chat() {
       console.log(error);
     }
   };
-  const sendMessage = async (e) => {
+
+  const handleSubmit = (e) => {
     e.preventDefault();
     const { uid, photoURL } = auth.currentUser;
-    await messagesRef.add({
-      text: formValue,
-      createdAt: firebase.firestore.FieldValue.serverTimestamp(),
-      uid,
-      photoURL,
-    });
+    dispatch(
+      addMessagesRequest({
+        text: formValue,
+        createdAt: new Date(),
+        uid,
+        photoURL,
+      })
+    );
     setFormValue("");
   };
+
   return (
     <ContainerChat>
       <Header>
@@ -56,18 +56,19 @@ export default function Chat() {
         )}
       </Header>
       <ChatList>
-        { messages && user !== null ? (
+        {messages && user !== null ? (
           messages.map((msg) => <Message key={msg.createdAt} message={msg} />)
         ) : (
-          <p>Loading...</p>
+          <Spin size="large"/>
         )}
       </ChatList>
-      <Form onSubmit={sendMessage}>
-        <Input onChange={(e) => setFormValue(e.target.value)}></Input>
-        <Button type="submit">
-          <Picture />
-        </Button>
-      </Form>
+      <form onSubmit={handleSubmit}>
+        <Input
+          value={formValue}
+          onChange={(e) => setFormValue(e.target.value)}
+        />
+        <Button type="submit">Send</Button>
+      </form>
     </ContainerChat>
   );
 }

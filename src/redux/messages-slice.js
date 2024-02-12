@@ -1,22 +1,28 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState= {
+const initialState = {
+  isLoading: false,
   messages: [],
-  error: '',
-  status: ''
+  error: "",
+  status: "",
 };
 
 const messagesSlice = createSlice({
   name: "messages",
   initialState,
   reducers: {
+    addMessagesRequest: (state, action) => {
+      state.isLoading = true;
+    },
+    getMessagesRequest: (state) => {
+      state.isLoading = true;
+    },
     getMessagesSuccess: (state, action) => {
-      state.status = "succeeded";
       state.messages = action.payload;
-  
+      state.isLoading = false;
     },
     getMessagesFailure: (state, action) => {
-      state.status = "failed";
+      state.isLoading = false;
       state.error = action.payload;
     },
   },
@@ -25,6 +31,8 @@ const messagesSlice = createSlice({
 export const {
   getMessagesSuccess,
   getMessagesFailure,
+  getMessagesRequest,
+  addMessagesRequest,
 } = messagesSlice.actions;
 
 export default messagesSlice.reducer;
