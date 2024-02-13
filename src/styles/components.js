@@ -2,19 +2,131 @@ import { css } from "@emotion/react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-export const StyledHTML = styled.html`
-  height: 100%;
-`;
-
 export const FlexContainer = styled.div`
   width: 100%;
   display: flex;
+  @media (max-width: 768px) {
+    display: block;
+  }
 `;
 export const Container = styled.div`
   padding: 10px;
   width: 100%;
-  background-color: black;
+  background-color: #292f3f;
 `;
+
+export const WearningContainer = styled(Container)`
+  background-color: #292f3f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+`;
+
+export const StartContainer = styled(Container)`
+  background-color: #292f3f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+`;
+
+export const Button = styled.button`
+  width: 77.904px;
+  height: 68.379px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+`;
+
+export const StartButton = styled(Button)`
+  font-weight: bold;
+  font-family: "Nunito", sans-serif;
+  border-radius: 30px;
+  border: 0;
+  padding: 15px 30px;
+  font-size: 20px;
+  background-color: #171a22;
+  color: #fff;
+  margin-top: 20px;
+  cursor: pointer;
+  width: fit-content;
+`;
+
+export const ResultContainer = styled(Container)`
+  width: 500px;
+  border-radius: 30px;
+  padding: 40px;
+  background-color: #fff;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+`;
+
+export const QuizzContainer = styled(Container)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const GameContainer = styled(Container)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 591px;
+  width: 682px;
+  border-radius: 30px;
+  padding: 40px;
+  background-color: #fff;
+  position: relative;
+  &:before,
+  &:after {
+    content: "";
+    display: block;
+    height: 50px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &:before {
+    width: 95%;
+    bottom: -10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    z-index: 0;
+  }
+
+  &:after {
+    width: 90%;
+    bottom: -20px;
+    background-color: rgba(255, 255, 255, 0.3);
+    z-index: 1;
+  }
+`;
+
+export const ListOfQuestions = styled.ul`
+  list-style: none;
+`;
+
+export const Question = styled.li`
+  padding: 15px;
+  border: 2px solid rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  margin-bottom: 10px;
+  margin-left: -19px; /* Замените width на max-width */
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+
+  &:hover {
+    border: 2px solid rgba(0, 0, 0, 0.3);
+  }
+`;
+
 
 export const ContainerChat = styled(Container)`
   background-color: #292f3f;
@@ -28,23 +140,15 @@ export const Title = styled.h1`
   font-size: 48px;
   font-style: normal;
   font-weight: 800;
-  line-height: 130%; /* 62.4px */
+  line-height: 130%;
   letter-spacing: 0.096px;
   text-transform: uppercase;
+  text-align: center;
 `;
 
 export const Content = styled.div`
   margin: 60px 70px;
   height: 68.1vh;
-`;
-export const ListOfQuestions = styled.ul`
-  display: flex;
-  align-items: flex-start;
-  margin-top: 100px;
-  flex-direction: column;
-  list-style: none;
-  padding: 0;
-  font-size: 50px;
 `;
 export const Item = styled.li`
   height: 135px;
@@ -75,17 +179,29 @@ export const Footer = styled.footer`
 `;
 
 export const Line = styled.div`
-  width: 100%;
-  height: 2px;
   background-color: #f7f7f7;
+  border-radius: 30px;
+  background: rgb(18, 231, 48);
+  transition: all 0.3s ease-in-out;
+  background: linear-gradient(
+    90deg,
+    rgba(18, 231, 48, 1) 0%,
+    rgba(0, 212, 255, 1) 100%
+  );
 `;
 
 export const LineProgress = styled.div`
-  width: 50%;
-  height: 9.382px;
-  flex-shrink: 0;
-  border-radius: 5px;
-  background: var(--light-grey, #e1e1e1);
+  height: 10px;
+  border-radius: 30px;
+  width: ${({ precentage }) => precentage + "%"};
+  background: rgb(18, 231, 48);
+  transition: all 0.3s ease-in-out;
+  background: linear-gradient(
+    90deg,
+    rgba(18, 231, 48, 1) 0%,
+    rgba(0, 212, 255, 1) 100%
+  );
+  margin-bottom: 25px;
 `;
 
 export const Buttons = styled.div`
@@ -95,27 +211,33 @@ export const Buttons = styled.div`
   width: 70%;
 `;
 export const ButtonBack = styled.button`
-  width: 78.411px;
-  height: 79.745px;
-  flex-shrink: 0;
-  background-color: transparent;
-  margin-right: 30px;
-  border: none;
+  font-weight: bold;
+  font-family: "Nunito", sans-serif;
+  border-radius: 30px;
+  border: 0;
+  padding: 15px 30px;
+  font-size: 20px;
+  background-color: red;
+  color: #fff;
+  margin-top: 20px;
   cursor: pointer;
 `;
 
 export const ProgressBar = styled.div`
-  display: block;
-  width: 1115px;
+  width: 100%;
+  height: 10px;
+  border-radius: 30px;
+  background-color: rgb(232, 232, 232);
 `;
 export const ContentBar = styled.div`
   display: flex;
   justify-content: space-between;
 `;
 
-export const Header = styled.div`
+export const HeaderContainer = styled.div`
   display: flex;
   justify-content: flex-end;
+  font-size: 100px;
 `;
 
 export const HeaderContent = styled.div`
@@ -124,8 +246,8 @@ export const HeaderContent = styled.div`
 
 export const Avatar = styled.img`
   background-color: white;
-  width: 96.081px;
-  height: 96.081px;
+  width: 50px;
+  height: 50px;
   border-radius: 50px;
   margin-right: 10px;
 `;
@@ -166,7 +288,6 @@ export const ChatList = styled.ul`
 export const Form = styled.form`
   display: flex;
   justify-content: center;
-  width: 100%;
   width: 90%;
   height: 111px;
 `;
@@ -174,23 +295,15 @@ export const Input = styled.input`
   border: none;
   background: rgba(0, 0, 0, 0.25);
   width: 80%;
-  height: 120px;
+  height: 52px;
   flex-shrink: 0;
   border-radius: 10px;
   color: white;
-  font-size: 80px;
+  font-size: 40px;
   padding-left: 20px;
   &:focus {
     outline: none;
   }
-`;
-
-export const Button = styled.button`
-  width: 77.904px;
-  height: 68.379px;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
 `;
 
 export const ContainerForm = styled.div`
@@ -236,15 +349,6 @@ export const Label = styled.label`
   margin-bottom: 30px;
 `;
 
-export const Text = styled.p`
-  color: #fff;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  margin-right: 117px;
-`;
-
 export const LinkAuth = styled(Link)`
   font-weight: bold;
   text-decoration: none;
@@ -254,14 +358,14 @@ export const LinkAuth = styled(Link)`
 
 export const StyledMessage = styled.li`
   margin-bottom: 50px;
-  font-size: 45px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  height: 100px;
-  width: fit-content;
+  height: fit-content;
+  max-width: fit-content;
   padding: 30px;
   border-radius: 21px;
+  word-wrap: break-word;
   ${({ messageClass }) =>
     messageClass === "sent"
       ? css`
@@ -276,14 +380,17 @@ export const StyledMessage = styled.li`
           justify-content: flex-start;
           background-color: #373e4e;
         `}
+  @media (max-width: 768px) {
+    font-size: 24px;
+  }
 `;
 
 export const LogOut = styled(Button)`
   width: 77.904px;
   height: 68.379px;
-  margin-left: -160px;
+  margin-left: -98px;
   color: white;
-  font-size: 40px;
+  font-size: 20px;
   font-weight: bold;
 `;
 
@@ -294,8 +401,8 @@ export const Signin = styled.div`
 `;
 
 export const Time = styled.p`
-  margin-top: 80px;
-  font-size: 30px;
+  margin-top: 52px;
+  font-size: 20px;
   ${({ messageClass }) =>
     messageClass === "sent"
       ? css`

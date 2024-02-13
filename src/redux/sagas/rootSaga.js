@@ -1,9 +1,21 @@
 import { takeEvery } from "redux-saga/effects";
 
-import { addMessageSaga, getMessagesSaga } from "./sagas";
-import { addMessagesRequest, getMessagesRequest } from "../messages-slice";
+import {
+  addMessageSaga,
+  finishGameSaga,
+  getMessagesSaga,
+  readyForQuizSaga,
+} from "./sagas";
+import {
+  addMessagesRequest,
+  getMessagesRequest,
+  userFinishAction,
+  userReadyForQuizAction,
+} from "../messages-slice";
 
 export function* rootSaga() {
   yield takeEvery(getMessagesRequest, getMessagesSaga);
   yield takeEvery(addMessagesRequest, addMessageSaga);
+  yield takeEvery(userReadyForQuizAction, readyForQuizSaga);
+  yield takeEvery(userFinishAction, finishGameSaga);
 }

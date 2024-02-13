@@ -1,10 +1,11 @@
+import { Header } from "./components/Header";
 import { Main } from "./components/Main";
-import { StyledHTML } from "./styles/components";
 function App() {
   return (
-    <div className="max-w-[240px] m-auto py-4">
-      <Main />;
-    </div>
+    <>
+
+       <Main />
+    </>
   );
 }
 export default App;
