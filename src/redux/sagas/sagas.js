@@ -1,8 +1,7 @@
 import { call, fork, put } from "redux-saga/effects";
 
 import { getMessagesFailure, getMessagesSuccess } from "../messages-slice";
-import { db, rsf } from "../../firebase"; // Подставьте соответствующий импорт Firebase
-
+import { rsf } from "../../firebase"; 
 export function* getMessagesSaga() {
   yield fork(rsf.firestore.syncCollection, "messages", {
     successActionCreator: getMessagesSuccess,
@@ -29,13 +28,13 @@ export function* addMessageSaga(action) {
 }
 
 export function* readyForQuizSaga(action) {
-  const { userName, uid } = action.payload;
+  const { userName } = action.payload;
   try {
     yield call(rsf.firestore.addDocument, "messages", {
       text: `${userName} начал игру!`,
       createdAt: new Date(),
       photoURL: "https://upload.wikimedia.org/wikipedia/ru/0/0a/Saw-billy.jpg",
-      uid: uid,
+      uid: "uidl8ATxoZM14GsEqUs6Vk",
     });
   } catch (error) {
     yield put(getMessagesFailure(error.message));
@@ -49,12 +48,9 @@ export function* finishGameSaga(action) {
       text: `${userName} закончил игру!`,
       createdAt: new Date(),
       photoURL: "https://upload.wikimedia.org/wikipedia/ru/0/0a/Saw-billy.jpg",
-      uid: uid,
+      uid: "uidl8ATxoZM14GsEqUs6Vk",
     });
   } catch (error) {
     yield put(getMessagesFailure(error.message));
   }
 }
-
-
-

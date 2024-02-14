@@ -25,7 +25,7 @@ export const Start = () => {
   return (
     <StartContainer>
       <Title>Я хочу сыграть с вами в игру!</Title>
-      <StartButton onClick={startQuiz}>Начать</StartButton>
+      <StartButton onClick={startQuiz}>Сыграть</StartButton>
     </StartContainer>
   );
 };

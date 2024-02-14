@@ -4,6 +4,7 @@ import {
   addMessageSaga,
   finishGameSaga,
   getMessagesSaga,
+  getQuestionsSaga,
   readyForQuizSaga,
 } from "./sagas";
 import {

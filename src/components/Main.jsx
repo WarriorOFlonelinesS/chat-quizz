@@ -13,7 +13,6 @@ export function Main() {
   const { user } = UserAuth();
   const { start } = useStart();
   const startFromLocale = localStorage.getItem("start");
-  console.log(startFromLocale);
   return (
     <>
       <GlobalStyle />
