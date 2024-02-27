@@ -1,7 +1,17 @@
 import { UserAuth } from "../context/AuthContext";
-import { HeaderContainer, HeaderContent, LinkAuth, LogOut } from "../styles/components";
+import {
+  Button,
+  HeaderButton,
+  HeaderContainer,
+  HeaderContent,
+  LinkAuth,
+  LogOut,
+} from "../styles/components";
+import { IconImage } from "../styles/components";
+import chatImage from "../images/Chat.svg";
+import quizImage from "../images/Quizz.svg";
 
-export const Header = () => {
+export const Header = ({ setShow, show }) => {
   const { user, logOut } = UserAuth();
   const handleSignOut = async () => {
     try {
@@ -11,13 +21,20 @@ export const Header = () => {
     }
   };
   return (
-    <HeaderContainer>
+    <HeaderContainer data-testid="header-container">
       {user !== null && user?.displayName ? (
         <HeaderContent>
-          <LogOut onClick={handleSignOut}>Logout</LogOut>
+          <HeaderButton onClick={() => setShow(!show)}>
+            {show ? (
+              <IconImage src={quizImage} alt="chat" />
+            ) : (
+              <IconImage src={chatImage} alt="chat" />
+            )}
+          </HeaderButton>
+          <LogOut onClick={handleSignOut}>Выйти</LogOut>
         </HeaderContent>
       ) : (
-        <LinkAuth to="/signin">Sign in</LinkAuth>
+        <LinkAuth to="/signin">Войти в аккаунт</LinkAuth>
       )}
     </HeaderContainer>
   );

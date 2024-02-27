@@ -1,11 +1,11 @@
-import { Title, WearningContainer } from "../styles/components"
+import { Title, WarningTitle, WearningContainer } from "../styles/components";
 
-export const Warning = () =>{
-    return(
+export const Warning = () => {
+  return (
     <WearningContainer>
-        <Title>
-            Чтобы увидеть чат и квиз, пожалуйста, аунтефицируйтесь!
-        </Title>
+      <WarningTitle>
+        Чтобы увидеть чат и квиз, пожалуйста, войдите в свой аккаунт
+      </WarningTitle>
     </WearningContainer>
-    )
-}
+  );
+};

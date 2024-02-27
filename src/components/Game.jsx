@@ -1,12 +1,13 @@
-import {
+  import {
   GameContainer,
-  Line,
   LineProgress,
   ListOfQuestions,
   ProgressBar,
   Question,
+  Title,
 } from "../styles/components";
 export const Game = ({ step, question, onClickVariant, questions }) => {
+
   const precentage = Math.round((step / questions.length) * 100);
   return (
     <GameContainer>
@@ -15,7 +16,7 @@ export const Game = ({ step, question, onClickVariant, questions }) => {
           precentage={precentage}
         />
       </ProgressBar>
-      <h1>{question.title}</h1>
+      <Title>{question.title}</Title>
       <ListOfQuestions>
         {question.variants.map((text, index) => (
           <Question onClick={() => onClickVariant(index)} key={text}>

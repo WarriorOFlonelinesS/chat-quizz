@@ -11,7 +11,7 @@ const messagesSlice = createSlice({
   name: "messages",
   initialState,
   reducers: {
-    addMessagesRequest: (state, action) => {
+    addMessagesRequest: (state) => {
       state.isLoading = true;
     },
     getMessagesRequest: (state) => {
@@ -29,11 +29,9 @@ const messagesSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(userReadyForQuizAction, (state, action) => {
       state.userReadyForQuiz = action.payload.ready;
-      localStorage.setItem("start", action.payload.ready);
     });
     builder.addCase(userFinishAction, (state, action) => {
-      state.userReadyForQuiz = action.payload.ready;
-      localStorage.removeItem("start");
+      state.userReadyForQuiz = "";
     });
   },
 });

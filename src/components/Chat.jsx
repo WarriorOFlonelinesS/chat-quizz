@@ -4,6 +4,7 @@ import {
   Input,
   Button,
   ChatList,
+  SendImage,
 } from "../styles/components";
 import { Message } from "./Message";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,12 +15,13 @@ import {
 import { UserAuth } from "../context/AuthContext";
 import { auth } from "../firebase";
 import { Spin } from "antd";
+import { getAllMessages } from "../redux/sagas/selectors/getMessagesSelector";
 
-export default function Chat() {
+export default function Chat({show}) {
   const dummy = useRef();
   const [formValue, setFormValue] = useState("");
   const { user } = UserAuth();
-  const messages = useSelector((state) => state.messages.messages);
+  const messages = useSelector(getAllMessages);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getMessagesRequest());
@@ -46,7 +48,7 @@ export default function Chat() {
   }, [messages]);
 
   return (
-    <ContainerChat>
+    <ContainerChat show={show}>
       <ChatList>
         {messages && user !== null ? (
           messages.map((msg) => (
@@ -65,7 +67,7 @@ export default function Chat() {
           value={formValue}
           onChange={(e) => setFormValue(e.target.value)}
         />
-        <Button type="submit">Send</Button>
+        <Button type="submit"><SendImage src={require('../images/Send.svg').default}  alt="Send" /></Button>
       </form>
     </ContainerChat>
   );

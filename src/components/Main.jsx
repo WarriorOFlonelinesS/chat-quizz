@@ -7,24 +7,25 @@ import { useState } from "react";
 import { Header } from "./Header";
 import { UserAuth } from "../context/AuthContext";
 import { Warning } from "./Warning";
-import { useStart, StartProvider } from "../context/StartContext";
+import { useStart } from "../context/StartContext";
 
 export function Main() {
   const { user } = UserAuth();
   const { start } = useStart();
-  const startFromLocale = localStorage.getItem("start");
+  const [show, setShow] = useState(false);
   return (
-    <>
+    <div data-testid="main">
       <GlobalStyle />
-      <Header />
+      <Header setShow={setShow} show={show} />
+
       {user ? (
         <FlexContainer>
-          {start || startFromLocale !== null ? <Quizz /> : <Start />}
-          <Chat />
+          {start ? <Quizz show={show} /> : <Start show={show} />}
+          <Chat show={show} />
         </FlexContainer>
       ) : (
         <Warning />
       )}
-    </>
+    </div>
   );
 }

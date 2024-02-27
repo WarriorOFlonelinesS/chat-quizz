@@ -31,4 +31,4 @@ img {
 }
 `;
 
-export default GlobalStyle
+export default GlobalStyle;

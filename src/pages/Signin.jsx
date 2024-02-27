@@ -34,7 +34,7 @@ const Signin = () => {
     <div style={styledSignIn}>
       <GlobalStyle />
       <h1 className="text-center text-3xl font-bold py- color-white">
-        Sign in
+        Войдите в аккаунт
       </h1>
       <div className="max-w-[240px] m-auto py-4">
         <GoogleButton onClick={handleGoogleSignIn} />

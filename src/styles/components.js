@@ -5,18 +5,18 @@ import styled from "styled-components";
 export const FlexContainer = styled.div`
   width: 100%;
   display: flex;
-  @media (max-width: 768px) {
+  @media ${({ theme }) => theme.media.large} {
     display: block;
   }
 `;
 export const Container = styled.div`
   padding: 10px;
   width: 100%;
-  background-color: #292f3f;
+  background-color: ${({ theme }) => theme.colors.bg};
 `;
 
 export const WearningContainer = styled(Container)`
-  background-color: #292f3f;
+  background-color: ${({ theme }) => theme.colors.bg};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -24,16 +24,19 @@ export const WearningContainer = styled(Container)`
 `;
 
 export const StartContainer = styled(Container)`
-  background-color: #292f3f;
+  background-color: ${({ theme }) => theme.colors.bg};
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  @media ${({ theme }) => theme.media.large} {
+    display: ${({ show }) => (show ? "none" : "flex")};
+  }
 `;
 
 export const Button = styled.button`
-  width: 77.904px;
-  height: 68.379px;
+  width: 50px;
+  height: 50px;
   background-color: transparent;
   border: none;
   cursor: pointer;
@@ -67,12 +70,21 @@ export const ResultContainer = styled(Container)`
 
 export const QuizzContainer = styled(Container)`
   display: flex;
+
   align-items: center;
   justify-content: center;
+  @media ${({ theme }) => theme.media.large} {
+    display: ${({ show }) => (show ? "none" : "flex")};
+  }
 `;
 
 export const GameContainer = styled(Container)`
-  display: flex;
+  @media ${({ theme }) => theme.media.large} {
+    display: "flex";
+    overflow: hidden;
+    height: 490px;
+    min-width: 295px;
+  }
   align-items: center;
   justify-content: center;
   flex-direction: column;
@@ -118,24 +130,29 @@ export const Question = styled.li`
   border: 2px solid rgba(0, 0, 0, 0.1);
   border-radius: 15px;
   margin-bottom: 10px;
-  margin-left: -19px; /* Замените width на max-width */
+  margin-left: -19px;
   cursor: pointer;
   transition: all 0.1s ease-in-out;
+  @media ${({ theme }) => theme.media.large} {
+    margin-left: -48px;
+  }
 
   &:hover {
     border: 2px solid rgba(0, 0, 0, 0.3);
   }
 `;
 
-
 export const ContainerChat = styled(Container)`
-  background-color: #292f3f;
+  background-color: ${({ theme }) => theme.colors.bg};
   width: 100%;
   min-height: 90vh;
+  @media ${({ theme }) => theme.media.large} {
+    display: ${({ show }) => (show ? "block" : "none")};
+  }
 `;
 
 export const Title = styled.h1`
-  color: #fff;
+  color: black;
   font-family: Inter;
   font-size: 48px;
   font-style: normal;
@@ -144,6 +161,9 @@ export const Title = styled.h1`
   letter-spacing: 0.096px;
   text-transform: uppercase;
   text-align: center;
+  @media ${({ theme }) => theme.media.large} {
+    font-size: 28px;
+  }
 `;
 
 export const Content = styled.div`
@@ -242,6 +262,8 @@ export const HeaderContainer = styled.div`
 
 export const HeaderContent = styled.div`
   display: flex;
+  width: 100%;
+  justify-content: space-between;
 `;
 
 export const Avatar = styled.img`
@@ -250,6 +272,14 @@ export const Avatar = styled.img`
   height: 50px;
   border-radius: 50px;
   margin-right: 10px;
+  @media ${({ theme }) => theme.media.large} {
+    width: 30px;
+    height: 30px;
+  }
+  @media ${({ theme }) => theme.media.small} {
+    width: 25px;
+    height: 25px;
+  }
 `;
 
 export const ChatList = styled.ul`
@@ -262,7 +292,7 @@ export const ChatList = styled.ul`
   list-style: none;
   color: white;
   font-weight: bold;
-  padding-left: 40px;
+  padding-left: 0px;
   margin: 0;
 
   &:hover {
@@ -287,7 +317,7 @@ export const ChatList = styled.ul`
 
 export const Form = styled.form`
   display: flex;
-  justify-content: center;
+  align-items: center;
   width: 90%;
   height: 111px;
 `;
@@ -353,7 +383,7 @@ export const LinkAuth = styled(Link)`
   font-weight: bold;
   text-decoration: none;
   color: white;
-  font-size: 47px;
+  font-size: 27px;
 `;
 
 export const StyledMessage = styled.li`
@@ -380,15 +410,14 @@ export const StyledMessage = styled.li`
           justify-content: flex-start;
           background-color: #373e4e;
         `}
-  @media (max-width: 768px) {
-    font-size: 24px;
+  @media ${({ theme }) => theme.media.large} {
+    font-size: 15px;
   }
 `;
 
 export const LogOut = styled(Button)`
   width: 77.904px;
   height: 68.379px;
-  margin-left: -98px;
   color: white;
   font-size: 20px;
   font-weight: bold;
@@ -416,4 +445,44 @@ export const Time = styled.p`
           margin-left: 33px;
           justify-content: flex-start;
         `}
+  @media ${({ theme }) => theme.media.large} {
+    font-size: 15px;
+  }
+`;
+
+export const SendImage = styled.img`
+  max-width: 105%;
+`;
+
+export const Image = styled.img`
+  max-width: 30%;
+  max-width: 30%;
+  @media ${({ theme }) => theme.media.large} {
+    width: 35%;
+  }
+`;
+
+export const StartTitle = styled(Title)`
+  color: ${({ theme }) => theme.colors.title};
+`;
+
+export const WarningTitle = styled(Title)`
+  color: ${({ theme }) => theme.colors.title};
+`;
+export const IconImage = styled.img`
+  width: 32px;
+`;
+
+export const HeaderButton = styled(Button)`
+  display: none;
+  @media ${({ theme }) => theme.media.large} {
+    display: block;
+  }
+`;
+
+export const ResultTitle = styled.h1`
+  @media ${({ theme }) => theme.media.large} {
+    font-size: 22px;
+    text-align: center;
+  }
 `;
