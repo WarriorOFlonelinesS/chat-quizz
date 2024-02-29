@@ -1,17 +1,17 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAction, createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   isLoading: false,
   messages: [],
   error: "",
-  status: "",
+  userReadyForQuiz: false,
 };
 
 const messagesSlice = createSlice({
   name: "messages",
   initialState,
   reducers: {
-    addMessagesRequest: (state, action) => {
+    addMessagesRequest: (state) => {
       state.isLoading = true;
     },
     getMessagesRequest: (state) => {
@@ -26,6 +26,14 @@ const messagesSlice = createSlice({
       state.error = action.payload;
     },
   },
+  extraReducers: (builder) => {
+    builder.addCase(userReadyForQuizAction, (state, action) => {
+      state.userReadyForQuiz = action.payload.ready;
+    });
+    builder.addCase(userFinishAction, (state, action) => {
+      state.userReadyForQuiz = "";
+    });
+  },
 });
 
 export const {
@@ -36,3 +44,8 @@ export const {
 } = messagesSlice.actions;
 
 export default messagesSlice.reducer;
+
+export const userReadyForQuizAction = createAction(
+  "userReadyForQuiz/userReadyForQuiz"
+);
+export const userFinishAction = createAction("userReadyForQuiz/userFinishGame");

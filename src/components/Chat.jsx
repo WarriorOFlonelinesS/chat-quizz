@@ -1,34 +1,31 @@
-import { useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import {
   ContainerChat,
   Input,
   Button,
   ChatList,
-  Header,
-  HeaderContent,
-  LogOut,
-  LinkAuth,
+  SendImage,
 } from "../styles/components";
 import { Message } from "./Message";
 import { useDispatch, useSelector } from "react-redux";
-import { addMessagesRequest } from "../redux/messages-slice";
+import {
+  addMessagesRequest,
+  getMessagesRequest,
+} from "../redux/messages-slice";
 import { UserAuth } from "../context/AuthContext";
 import { auth } from "../firebase";
 import { Spin } from "antd";
+import { getAllMessages } from "../redux/sagas/selectors/getMessagesSelector";
 
-export default function Chat() {
+export default function Chat({show}) {
+  const dummy = useRef();
   const [formValue, setFormValue] = useState("");
-  const { user, logOut } = UserAuth();
-  const messages = useSelector((state) => state.messages.messages);
+  const { user } = UserAuth();
+  const messages = useSelector(getAllMessages);
   const dispatch = useDispatch();
-
-  const handleSignOut = async () => {
-    try {
-      await logOut();
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  useEffect(() => {
+    dispatch(getMessagesRequest());
+  }, [dispatch]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -44,30 +41,33 @@ export default function Chat() {
     setFormValue("");
   };
 
+  useEffect(() => {
+    if (dummy.current) {
+      dummy.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [messages]);
+
   return (
-    <ContainerChat>
-      <Header>
-        {user !== null && user?.displayName ? (
-          <HeaderContent>
-            <LogOut onClick={handleSignOut}>Logout</LogOut>
-          </HeaderContent>
-        ) : (
-          <LinkAuth to="/signin">Sign in</LinkAuth>
-        )}
-      </Header>
+    <ContainerChat show={show}>
       <ChatList>
         {messages && user !== null ? (
-          messages.map((msg) => <Message key={msg.createdAt} message={msg} />)
+          messages.map((msg) => (
+            <Message
+              key={msg.createdAt}
+              message={msg}
+            />
+          ))
         ) : (
-          <Spin size="large"/>
+          <Spin size="large" />
         )}
+        <div ref={dummy}></div>
       </ChatList>
       <form onSubmit={handleSubmit}>
         <Input
           value={formValue}
           onChange={(e) => setFormValue(e.target.value)}
         />
-        <Button type="submit">Send</Button>
+        <Button type="submit"><SendImage src={require('../images/Send.svg').default}  alt="Send" /></Button>
       </form>
     </ContainerChat>
   );

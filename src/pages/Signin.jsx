@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
-import { GoogleButton } from 'react-google-button';
-import { UserAuth } from '../context/AuthContext';
-import { useNavigate } from 'react-router-dom';
-import GlobalStyle from '../styles/globalStyle';
+import React, { useEffect } from "react";
+import { GoogleButton } from "react-google-button";
+import { UserAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
+import GlobalStyle from "../styles/globalStyle";
 
 const Signin = () => {
   const { googleSignIn, user } = UserAuth();
@@ -12,29 +12,31 @@ const Signin = () => {
     try {
       await googleSignIn();
     } catch (error) {
-      console.log(error);
+      console.log("Caught error Popup closed");
     }
   };
 
   useEffect(() => {
     if (user != null) {
-      navigate('/');
+      navigate("/");
     }
   }, [user]);
 
-  const styledSignIn ={
-    display : 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexDirection: 'column',
+  const styledSignIn = {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    flexDirection: "column",
     color: "white",
-  }
+  };
 
   return (
-    <div style={styledSignIn} >
+    <div style={styledSignIn}>
       <GlobalStyle />
-      <h1 className='text-center text-3xl font-bold py- color-white'>Sign in</h1>
-      <div className='max-w-[240px] m-auto py-4'>
+      <h1 className="text-center text-3xl font-bold py- color-white">
+        Войдите в аккаунт
+      </h1>
+      <div className="max-w-[240px] m-auto py-4">
         <GoogleButton onClick={handleGoogleSignIn} />
       </div>
     </div>
