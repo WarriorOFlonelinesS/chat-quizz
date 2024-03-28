@@ -88,25 +88,24 @@
 ![image](https://github.com/WarriorOFlonelinesS/chat-quizz/assets/98014616/1b72451f-1b04-41e7-82bb-bd892d567608)
 
 <p>
-  After ordering, a message will appeare:
+  Аfter logging into the account, you can write in the chat or take part in the quiz
 </p>
 
-<div align='center'>
-  <img src='https://github.com/WarriorOFlonelinesS/Restaurant/assets/98014616/51b78d7a-4ca5-47d5-8c72-dd03957b4307'>
-</div>
+![image](https://github.com/WarriorOFlonelinesS/chat-quizz/assets/98014616/570f238c-9a99-463d-a03a-2e7590dc374c)
 
 <p>
-  Next, you should click on an icon of a cart, and you will see this window:
+  If you click on the button "Сыграть" you can see a message about begginig of a game
 </p>
 
-<img src="https://github.com/WarriorOFlonelinesS/Restaurant/assets/98014616/3c64b542-0e8d-4d57-b85d-795215edcc47" alt="cart">
+![image](https://github.com/WarriorOFlonelinesS/chat-quizz/assets/98014616/e0ff2058-785a-4e4a-89af-29bb05bcfd94)
 
 <p>
-    When you switched from the cart to window 'Оформлення замовлення' by clicking on appropriate button.
+    After passing a game, you can see a result on the rating
 </p>
-
-<img src='https://github.com/WarriorOFlonelinesS/Restaurant/assets/98014616/5384da56-a95f-4071-aa4c-ae7e85c9e74c'>
-'Finally, you need fill a form and click on "Оформити"
+![image](https://github.com/WarriorOFlonelinesS/chat-quizz/assets/98014616/524c8bf9-32c9-48c9-b1e1-d90bef3732d8)
+<p>
+    If you click on the button 'Закончить игру', you will see a message about 
+</p>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -137,7 +136,5 @@ Ready project: https://dva-varenika.netlify.app/
 [React-url]: https://legacy.reactjs.org/
 [Redux]: https://img.shields.io/badge/redux-20232A?style=for-the-badge&logo=redux&logoColor=764abc
 [Redux-url]: https://redux.js.org/
-[styled-components]: https://img.shields.io/badge/react-20232A?style=for-the-badge&logo=styled-components
-[styled-components-url]: 
-[Firebase]: https://img.shields.io/badge/php-20232A?style=for-the-badge&logo=php&logoColor=#777BB4
+[Firebase]: https://img.shields.io/badge/firebase-20232A?style=for-the-badge&logo=firebase&logoColor=yellow
 [Firebase-url]: https://firebase.google.com/
