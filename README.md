@@ -102,10 +102,16 @@
 <p>
     After passing a game, you can see a result on the rating
 </p>
-![image](https://github.com/WarriorOFlonelinesS/chat-quizz/assets/98014616/524c8bf9-32c9-48c9-b1e1-d90bef3732d8)
+
+![image](https://github.com/WarriorOFlonelinesS/chat-quizz/assets/98014616/04716d06-4bb5-4c1f-99d5-b617b471f292)
+
+
 <p>
-    If you click on the button 'Закончить игру', you will see a message about 
+    If you click on the button 'Закончить игру', you will see a message about ending or you can restart a game if you click on the button 'Попробовать снова" 
 </p>
+
+![image](https://github.com/WarriorOFlonelinesS/chat-quizz/assets/98014616/09f75158-c028-4943-ba01-0880ca6e679a)
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
