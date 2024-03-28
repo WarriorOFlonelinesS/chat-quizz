@@ -1,4 +1,7 @@
 <a name="readme-top"></a>
+<div align='center'>
+  <img src='https://github.com/WarriorOFlonelinesS/chat-quizz/blob/master/public/favicon.svg'>
+</div>
   <h3 align="center">CHAT-QUIZZ</h3>
   <p align="center">
     The app of the restorant 'DVA VARENYKY'
@@ -30,42 +33,25 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-![image](https://github.com/WarriorOFlonelinesS/Restaurant/assets/98014616/7f021a22-2102-4ac0-a0a3-2fc476315fc2)
+![image](https://github.com/WarriorOFlonelinesS/chat-quizz/assets/98014616/4b21b707-a55a-4ea6-af5f-c23b3698f687)
 
- DVA VARENYKA is your ideal companion in the world of savory and diverse culinary delights! Our app offers a unique experience for lovers of gastronomy and gourmets, providing access to a rich menu and the convenience of placing orders online.
+"Chat-quiz" is an interactive application that combines chat and quiz functionality for users. Here are the main characteristics and description of such an application:
 
-Main features of the DVA VARENYKA application:
++ Chat Interface: The application provides the user with the ability to communicate with other users through a chat interface. Users can exchange messages, discuss topics and ask questions.
 
-Diverse Menu:
++ Quizzes: Users can participate in quizzes by answering questions presented in the form of short surveys or quests. Questions can be on various topics: from general knowledge to specific areas.
 
-+ A wide variety of dishes to satisfy any taste and preference.
++ Interactivity: Users can interact with the quiz by selecting answers to questions and receiving instant feedback on the correctness of the answers.
 
-Easy Ordering:
++ Ranking and Achievements: Users can earn points or achievements for taking quizzes and being active in chat. This can encourage users to engage with the app and stay active.
 
-+ A simple and intuitive interface for easy food ordering. 
-+ Ability to customize dishes according to user preferences. 
-+ Option to add items to the cart and edit the order. 
-
-Fast and Secure Delivery:
-
-+ Secure and reliable payment methods.
-+ Choice of self-pickup or convenient delivery to the specified address.
-+ Promotions and Special Offers:
-
-Customer Feedback and Support:
-
-+ Easy access to support service contacts.
-+ Ability to rate dishes and leave reviews. 
-
-DVA VARENYKA aims not only to satisfy your appetite but also to create an unforgettable food ordering experience. Indulge in the flavor of every meal, making orders in our convenient app!
+"Chat-quiz" provides the user with a unique experience of combining communication with other users and testing their knowledge through quizzes, making it attractive to a wide range of users of different age groups and interests.
 
 ### Built With
 
-* [![JavaScript][JavaScript]][JavaScript-url]
-* [![HTML][HTML]][HTML-url]
-* [![CSS3][CSS3]][CSS3-url]
-* [![PHP][PHP]][PHP-url]
-* [![MYSQL][MYSQL]][MYSQL-url]
+* [![React][React]][React-url]
+* [![Redux][Redux]][Redux-url]
+* [![Firebase][Firebase]][Firebase-url]
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
@@ -94,11 +80,12 @@ DVA VARENYKA aims not only to satisfy your appetite but also to create an unforg
 
 ## Usage
 <p>
-  For ordering a dish, you need to click on buttons 'Замовити'. Also you can scroll by orange buttons.
+  Before using the application you should follow the link "Войти в аккаунт" and sing in or sign up through the Google button. 
 </p>
 
-<img src = 'https://github.com/WarriorOFlonelinesS/Restaurant/assets/98014616/26ed6ee2-5e74-42c1-ba6d-4483c01cfa93'>
+![image](https://github.com/WarriorOFlonelinesS/chat-quizz/assets/98014616/362f2903-00ff-47f0-bc45-76d7d51efc8d)
 <br>
+![image](https://github.com/WarriorOFlonelinesS/chat-quizz/assets/98014616/1b72451f-1b04-41e7-82bb-bd892d567608)
 
 <p>
   After ordering, a message will appeare:
@@ -146,13 +133,11 @@ Ready project: https://dva-varenika.netlify.app/
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 [product-screenshot]: images/screenshot.png
-[JavaScript]: https://img.shields.io/badge/javascript-20232A?style=for-the-badge&logo=javascript&logoColor=yellow
-[JavaScript-url]: https://developer.mozilla.org/en-US/docs/Web/JavaScript
-[HTML]: https://img.shields.io/badge/html5-20232A?style=for-the-badge&logo=html5&logoColor=red
-[HTML-url]: [https://reactjs.org/](https://developer.mozilla.org/ru/docs/Web/HTML)
-[CSS3]: https://img.shields.io/badge/css3-20232A?style=for-the-badge&logo=css3&logoColor=blue
-[CSS3-url]: [https://reactjs.org/](https://developer.mozilla.org/ru/docs/Web/HTML)
-[PHP]: https://img.shields.io/badge/php-20232A?style=for-the-badge&logo=php&logoColor=#777BB4
-[PHP-url]: https://www.php.net/manual/ru/intro-whatis.php
-[MYSQL]: https://img.shields.io/badge/mysql-20232A?style=for-the-badge&logo=mysql&logoColor=#4479A1
-[MYSQL-url]: https://www.mysql.com
+[React]: https://img.shields.io/badge/react-20232A?style=for-the-badge&logo=react&logoColor=blue
+[React-url]: https://legacy.reactjs.org/
+[Redux]: https://img.shields.io/badge/redux-20232A?style=for-the-badge&logo=redux&logoColor=764abc
+[Redux-url]: https://redux.js.org/
+[styled-components]: https://img.shields.io/badge/react-20232A?style=for-the-badge&logo=styled-components
+[styled-components-url]: 
+[Firebase]: https://img.shields.io/badge/php-20232A?style=for-the-badge&logo=php&logoColor=#777BB4
+[Firebase-url]: https://firebase.google.com/
