@@ -69,7 +69,7 @@
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/WarriorOFlonelinesS/Restaurant.git
+    https://github.com/WarriorOFlonelinesS/chat-quizz.git
    ```
 2. Install NPM packages
    ```sh
